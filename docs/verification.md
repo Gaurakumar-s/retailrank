@@ -27,4 +27,12 @@ The browser ran the local FastAPI application with the actual bundled model.
 
 ## Scope
 
-This is a local research demo. No public deployment, real purchases, online conversion experiment, accessibility certification or multi-user load test is claimed. Model quality metrics are unchanged by the interface redesign.
+This is a research demo deployed on Render. No real purchases, online conversion experiment, accessibility certification or multi-user load test is claimed. Model quality metrics are unchanged by the interface redesign.
+
+## Public deployment verification
+
+Live URL: https://retailrank.onrender.com
+
+Deployed the Docker image on Render's Free service. The public health endpoint reports `retailrank-v1` with 20,000 products. Verified homepage/static assets, an HTTPS Secure/HttpOnly/SameSite session cookie, popularity fallback, historical shopper replay, future-target exclusion, cart-driven recommendation updates, cross-origin mutation rejection and the 2,000-query evaluation report. The live browser also loaded an example shopper and the results dashboard.
+
+The free instance can sleep after inactivity. Initial visits may take 50 seconds or more to wake it. SQLite demo activity is temporary and can reset on restarts or redeploys. The trained model is bundled in the image and remains available after restart.

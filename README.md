@@ -2,6 +2,8 @@
 
 [![Project checks](https://github.com/Gaurakumar-s/retailrank/actions/workflows/checks.yml/badge.svg)](https://github.com/Gaurakumar-s/retailrank/actions/workflows/checks.yml)
 
+**Live demo: [retailrank.onrender.com](https://retailrank.onrender.com)**
+
 A working product recommendation demo that updates recommendations as a shopper views products, adds them to a cart, or simulates a purchase. It combines collaborative filtering, behavioral similarity and a learned ranking model, with a dashboard for comparing results.
 
 Products are anonymized Retailrocket item IDs. The interface uses abstract illustrations; it does not invent product names, prices or real purchases.
@@ -82,7 +84,7 @@ Anonymous sessions use an HttpOnly cookie. SQLite records actions and impression
 
 **9 tests pass**, covering ranking math, strict chronological histories, cold start, session isolation, invalid inputs, replay target separation and evaluation audits. Browser checks covered example shoppers, item details, cart/purchase actions, search, method switching and navigation. Desktop and 390px mobile layouts were visually checked. See `docs/verification.md`.
 
-GitHub Actions runs the test suite and a separate Docker build/HTTP smoke check on pushes and pull requests. A Dockerfile and Render blueprint are included. Public deployment is not set up; check the workflow status above for the latest container result. The included model requires no training during startup. For a public service, add request throttling, storage retention, deployment monitoring and a durable database as needed.
+GitHub Actions runs the test suite and a separate Docker build/HTTP smoke check on pushes and pull requests. A Dockerfile and Render blueprint are included. The public demo runs on Render’s free Docker service; check the workflow status above for the latest container result. The first visit after inactivity may take 50 seconds or more while the service wakes up. Demo activity uses temporary SQLite storage and may reset when the instance restarts or redeploys. The included model requires no training during startup. For a public service, add request throttling, storage retention, deployment monitoring and a durable database as needed.
 
 ## Files
 
