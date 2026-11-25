@@ -1,0 +1,45 @@
+name: Project checks
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      OPENBLAS_NUM_THREADS: '2'
+      OMP_NUM_THREADS: '2'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install --no-deps -e .
+      - name: Verify API, model and evaluation tests
+        run: pytest -q
+      - name: Check browser JavaScript
+        run: node --check web/app.js
+  container:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build application image
+        run: docker build -t retailrank:check .
+      - name: Check container health and recommendations
+        run: |
+          docker run -d --name retailrank-check -p 8000:8000 retailrank:check
+          trap 'docker logs retailrank-check; docker rm -f retailrank-check' EXIT
+          for attempt in $(seq 1 30); do
+            if curl -fsS http://127.0.0.1:8000/api/health > /tmp/retailrank-health.json; then break; fi
+            sleep 2
+          done
+          python -c 'import json; assert json.load(open("/tmp/retailrank-health.json"))["catalog_size"] == 20000'
+          curl -fsS http://127.0.0.1:8000/ > /dev/null
+          curl -fsS http://127.0.0.1:8000/api/recommendations > /tmp/retailrank-recommendations.json
+          python -c 'import json; r=json.load(open("/tmp/retailrank-recommendations.json")); assert len(r["items"]) == 10 and r["cold_start"]'

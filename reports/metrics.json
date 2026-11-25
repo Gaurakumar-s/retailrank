@@ -1,0 +1,175 @@
+{
+  "dataset": "Retailrocket",
+  "source": "https://www.kaggle.com/datasets/retailrocket/ecommerce-dataset",
+  "license": "CC BY-NC-SA 4.0",
+  "sha256": "3745aa83238b1e6d44d8fda209807899f420084398f94ddf745f3cbcfecbf9e7",
+  "seed": 42,
+  "original_events": 2756101,
+  "deduplicated_events": 2755641,
+  "event_counts": {
+    "view": 2664218,
+    "addtocart": 68966,
+    "transaction": 22457
+  },
+  "data_start": "2015-05-03T03:00:04.384000+00:00",
+  "data_end": "2015-09-18T02:59:47.788000+00:00",
+  "cutoffs": {
+    "retrieval_end": "2015-07-24T22:11:54.426000+00:00",
+    "ranker_train_end": "2015-08-14T14:59:51.937000+00:00",
+    "validation_end": "2015-08-28T10:11:50.277000+00:00"
+  },
+  "retrieval": {
+    "events_before_cutoff": 1723184,
+    "catalog_size": 20000,
+    "fitted_users": 105476,
+    "fitted_events": 511378,
+    "user_filter": "2 to 100 distinct catalog items before cutoff",
+    "fold_in_max_score_difference": 6.51925802230835e-08
+  },
+  "query_pool_sizes": {
+    "ranker_train": 63727,
+    "validation": 35436,
+    "test": 53547
+  },
+  "query_sample_sizes": {
+    "ranker_train": 7000,
+    "validation": 2000,
+    "test": 2000
+  },
+  "train_audit": {
+    "eligible_queries": 3013,
+    "retrieved_targets": 1911,
+    "injected_targets": 1102,
+    "unknown_catalog_targets": 2966,
+    "unknown_profiles": 1021
+  },
+  "validation_audit": {
+    "eligible_queries": 899,
+    "retrieved_targets": 587,
+    "injected_targets": 0,
+    "unknown_catalog_targets": 839,
+    "unknown_profiles": 262
+  },
+  "ranker_best_iteration": 20,
+  "feature_importance": {
+    "als_score": 41,
+    "profile_similarity": 30,
+    "max_history_similarity": 39,
+    "last_item_similarity": 14,
+    "mean_history_similarity": 28,
+    "log_popularity": 97,
+    "cart_rate": 8,
+    "purchase_rate": 1,
+    "recent_popularity_share": 21,
+    "history_length": 0,
+    "history_cart_share": 1,
+    "history_purchase_share": 0
+  },
+  "validation": {
+    "queries": 2000,
+    "methods": {
+      "popular": {
+        "hit_rate_at_10": 0.001,
+        "ndcg_at_10": 0.00046533827903669656,
+        "mrr_at_10": 0.00029166666666666664,
+        "hit_rate_at_20": 0.0035,
+        "catalog_coverage_at_20": 0.00105
+      },
+      "als": {
+        "hit_rate_at_10": 0.0815,
+        "ndcg_at_10": 0.04526434389971295,
+        "mrr_at_10": 0.03421825396825399,
+        "hit_rate_at_20": 0.116,
+        "catalog_coverage_at_20": 0.0723
+      },
+      "similarity": {
+        "hit_rate_at_10": 0.114,
+        "ndcg_at_10": 0.06640073149867559,
+        "mrr_at_10": 0.051847222222222246,
+        "hit_rate_at_20": 0.1725,
+        "catalog_coverage_at_20": 0.5448
+      },
+      "ranker": {
+        "hit_rate_at_10": 0.13,
+        "ndcg_at_10": 0.07418202827452246,
+        "mrr_at_10": 0.057037698412698436,
+        "hit_rate_at_20": 0.1735,
+        "catalog_coverage_at_20": 0.37355
+      }
+    },
+    "candidate_recall": 0.297,
+    "target_catalog_coverage": 0.5805,
+    "known_profile_fraction": 0.635,
+    "ndcg_delta_vs_als_95pct_interval": [
+      0.021458570922099754,
+      0.03689139204289788
+    ],
+    "local_latency_ms": {
+      "p50": 0.6188959814608097,
+      "p95": 0.7699543959461153,
+      "samples": 100
+    }
+  },
+  "test": {
+    "queries": 2000,
+    "methods": {
+      "popular": {
+        "hit_rate_at_10": 0.0015,
+        "ndcg_at_10": 0.0006460148371100896,
+        "mrr_at_10": 0.000375,
+        "hit_rate_at_20": 0.002,
+        "catalog_coverage_at_20": 0.00105
+      },
+      "als": {
+        "hit_rate_at_10": 0.072,
+        "ndcg_at_10": 0.04178225481565264,
+        "mrr_at_10": 0.03252123015873019,
+        "hit_rate_at_20": 0.103,
+        "catalog_coverage_at_20": 0.0711
+      },
+      "similarity": {
+        "hit_rate_at_10": 0.111,
+        "ndcg_at_10": 0.05943561137593902,
+        "mrr_at_10": 0.04376369047619051,
+        "hit_rate_at_20": 0.1495,
+        "catalog_coverage_at_20": 0.51815
+      },
+      "ranker": {
+        "hit_rate_at_10": 0.113,
+        "ndcg_at_10": 0.058891437935576524,
+        "mrr_at_10": 0.04249444444444446,
+        "hit_rate_at_20": 0.1585,
+        "catalog_coverage_at_20": 0.3564
+      }
+    },
+    "candidate_recall": 0.262,
+    "target_catalog_coverage": 0.5305,
+    "known_profile_fraction": 0.595,
+    "ndcg_delta_vs_als_95pct_interval": [
+      0.00985098532880415,
+      0.024350769432981968
+    ],
+    "local_latency_ms": {
+      "p50": 0.6366665475070477,
+      "p95": 0.7802937878295777,
+      "samples": 100
+    }
+  },
+  "elapsed_seconds": 16.46,
+  "environment": {
+    "python": "3.12.15",
+    "lightgbm": "4.7.0",
+    "platform": "macOS-26.3.1-arm64-arm-64bit"
+  },
+  "evaluation_scope": "Next item outside the previous 20 interactions in a 30-minute session; at most 3 queries/session. Seeded reservoir sample within each time window. Unknown targets remain misses in evaluation. Single target per query, so hit rate equals recall.",
+  "limitations": [
+    "Anonymized products: no real titles, photos or categories are inferred.",
+    "Historical offline benchmark; no sales or conversion uplift is claimed.",
+    "Sparse sessions without prior events are outside the primary evaluation; empty-profile behavior is tested separately.",
+    "Catalog limited to frequent products selected before the retrieval cutoff. Unknown test targets count as misses.",
+    "Positive target injection is used only for ranker training, never validation or test.",
+    "User histories use only earlier session events. Item factors and statistics stay frozen after the first cutoff.",
+    "Sequential interactions are not exposure logs; an unobserved candidate is not a verified dislike.",
+    "Confidence intervals resample queries, not independent shoppers; interpret as descriptive."
+  ]
+}

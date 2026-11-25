@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: retailrank
+    runtime: docker
+    plan: free
+    healthCheckPath: /api/health
+    envVars:
+      - key: OPENBLAS_NUM_THREADS
+        value: 2
+      - key: OMP_NUM_THREADS
+        value: 2
